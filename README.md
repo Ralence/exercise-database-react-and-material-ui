@@ -1,9 +1,9 @@
 # Exercise Database
 
-Project .........Mobile Flashcards
-Purpose .........Just-for-fun practice project
-Creator .........Ranko Ostojic
-Created .........August, 2019
+- Project .........Mobile Flashcards
+- Purpose .........Just-for-fun practice project
+- Creator .........Ranko Ostojic
+- Created .........August, 2019
 
 This is a simple React App that was built with material-ui library.
 It was built with a purpose to practice and demonstrate using material-ui with react.
