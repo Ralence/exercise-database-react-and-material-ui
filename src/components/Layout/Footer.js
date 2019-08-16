@@ -4,7 +4,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import withWidth from "@material-ui/core/withWidth";
-import { ThemeProvider } from "@material-ui/styles";
 
 const useStyles = makeStyles({
   root: {
