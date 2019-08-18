@@ -55,7 +55,6 @@ const Form = ({
       ...form,
       [id]: val
     });
-    console.log(form);
   };
 
   const handleSubmit = () => {

@@ -3,6 +3,7 @@ import { Header, Footer } from "./components/Layout";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Exercises from "./components/Exercises";
 import { muscles, exercises } from "./store/store";
+import { Provider } from "./context";
 
 export default class extends Component {
   state = {
@@ -78,35 +79,27 @@ export default class extends Component {
       exerciseToDisplay: exercise
     }));
   };
-  render() {
-    const sortedExercises = this.sortExercisesByMuscle();
-    const { category, exerciseToDisplay, muscles, editMode } = this.state;
 
+  getContext = () => ({
+    ...this.state,
+    onExerciseSubmitted: this.handleExerciseSubmitted,
+    onTabSelect: this.handleTabSelected,
+    exercises: this.sortExercisesByMuscle(),
+    onSelect: this.handleExerciseSelected,
+    onDelete: this.handleExerciseDeleted,
+    onSelectEdit: this.handleExerciseEditSelected,
+    onExerciseEdited: this.handleExerciseEdited
+  });
+  render() {
     return (
-      <Fragment>
-        <CssBaseline />
-        <Header
-          onExerciseSubmitted={this.handleExerciseSubmitted}
-          muscles={muscles}
-        />
-        <Exercises
-          muscles={this.state.muscles}
-          exerciseToDisplay={exerciseToDisplay}
-          category={category}
-          exercises={sortedExercises}
-          editMode={editMode}
-          onSelect={this.handleExerciseSelected}
-          onDelete={this.handleExerciseDeleted}
-          onSelectEdit={this.handleExerciseEditSelected}
-          onExerciseSubmitted={this.handleExerciseSubmitted}
-          onExerciseEdited={this.handleExerciseEdited}
-        />
-        <Footer
-          muscles={this.state.muscles}
-          category={category}
-          onTabSelect={this.handleTabSelected}
-        />
-      </Fragment>
+      <Provider value={this.getContext()}>
+        <Fragment>
+          <CssBaseline />
+          <Header />
+          <Exercises />
+          <Footer />
+        </Fragment>
+      </Provider>
     );
   }
 }

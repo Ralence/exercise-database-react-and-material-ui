@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import withWidth from "@material-ui/core/withWidth";
+import { WithContext } from "../../context";
 
 const useStyles = makeStyles({
   root: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default withWidth()(({ muscles, onTabSelect, category, width }) => {
+const Footer = ({ muscles, onTabSelect, category, width }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -41,4 +42,6 @@ export default withWidth()(({ muscles, onTabSelect, category, width }) => {
       </Tabs>
     </AppBar>
   );
-});
+};
+
+export default WithContext(withWidth()(Footer));

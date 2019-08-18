@@ -11,6 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import Form from "../Exercises/Form";
 import { withStyles } from "@material-ui/styles";
+import { WithContext } from "../../context";
 
 import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
 
@@ -146,4 +147,4 @@ const main = ({
   );
 };
 
-export default withStyles(styles)(main);
+export default WithContext(withStyles(styles)(main));

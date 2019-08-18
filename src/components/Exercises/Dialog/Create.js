@@ -4,8 +4,9 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Form from "../Form";
+import { Consumer } from "../../../context";
 
-export default ({ muscles, onExerciseSubmitted }) => {
+export default () => {
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen() {
@@ -17,23 +18,27 @@ export default ({ muscles, onExerciseSubmitted }) => {
   }
 
   return (
-    <Fragment>
-      <Fab size="small" onClick={handleClickOpen} aria-label="add">
-        <AddIcon />
-      </Fab>
+    <Consumer>
+      {({ muscles, onExerciseSubmitted }) => (
+        <Fragment>
+          <Fab size="small" onClick={handleClickOpen} aria-label="add">
+            <AddIcon />
+          </Fab>
 
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-dialog-title"
-      >
-        <DialogTitle id="form-dialog-title">Add a new Exercise</DialogTitle>
-        <Form
-          setOpen={setOpen}
-          muscles={muscles}
-          onExerciseSubmitted={onExerciseSubmitted}
-        />
-      </Dialog>
-    </Fragment>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title">Add a new Exercise</DialogTitle>
+            <Form
+              setOpen={setOpen}
+              muscles={muscles}
+              onExerciseSubmitted={onExerciseSubmitted}
+            />
+          </Dialog>
+        </Fragment>
+      )}
+    </Consumer>
   );
 };
